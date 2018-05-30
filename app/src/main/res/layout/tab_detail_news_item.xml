@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dip">
+
+    <ImageView
+        android:id="@+id/iv_tab_detail_news_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/news_pic_default"
+        android:padding="1dip"
+        android:background="#33000000"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/tv_tab_detail_news_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dip"
+        android:layout_toRightOf="@+id/iv_tab_detail_news_item_image"
+        android:textSize="20dip"
+        android:text="发生的纠纷克拉斯JFK拉萨解放立刻撒旦解放网上大讲堂"
+        android:lines="2"/>
+    <TextView
+        android:id="@+id/tv_tab_detail_news_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dip"
+        android:layout_alignLeft="@id/tv_tab_detail_news_item_title"
+        android:layout_below="@id/tv_tab_detail_news_item_title"
+        android:textSize="14dip"
+        android:textColor="#33000000"
+        android:text="1990—10-09  09：43：23"
+        android:lines="2"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/icon_news_comment_num"/>
+
+</RelativeLayout>

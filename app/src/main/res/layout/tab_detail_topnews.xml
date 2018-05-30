@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="185dip">
+
+    <com.han.citynews_n.citynews_n.base.view.NorizontalScrollViewPager
+        android:id="@+id/nsvp_tab_detail_topnews"
+        android:layout_width="match_parent"
+        android:layout_height="185dip"></com.han.citynews_n.citynews_n.base.view.NorizontalScrollViewPager>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#33000000">
+
+        <TextView
+            android:id="@+id/tv_tab_detail_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="默认的描述信息"
+            android:textColor="#FFFFFF" />
+
+        <LinearLayout
+            android:id="@+id/ll_tab_detail_point_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"></LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

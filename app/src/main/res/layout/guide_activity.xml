@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.han.citynews_n.citynews_n.SplashActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"></android.support.v4.view.ViewPager>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dip">
+
+        <LinearLayout
+            android:id="@+id/ll_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+        <View
+            android:id="@+id/select_point"
+            android:layout_width="10dip"
+            android:layout_height="10dip"
+            android:background="@drawable/point_pressl" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_start_splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dip"
+        android:background="@drawable/bottom_bg"
+        android:text="开始体验"
+        android:visibility="gone" />
+
+</RelativeLayout>
