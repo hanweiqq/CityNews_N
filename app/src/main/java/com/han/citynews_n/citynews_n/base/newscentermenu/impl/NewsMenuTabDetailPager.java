@@ -1,7 +1,9 @@
 package com.han.citynews_n.citynews_n.base.newscentermenu.impl;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
@@ -10,6 +12,7 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.han.citynews_n.citynews_n.NewsDetailUi;
 import com.han.citynews_n.citynews_n.R;
 import com.han.citynews_n.citynews_n.base.NewsCenterMenuBasePager;
 import com.han.citynews_n.citynews_n.base.view.RefreshListView;
@@ -42,7 +46,7 @@ import java.util.List;
  * Created by han on 2018/5/18.
  */
 
-public class NewsMenuTabDetailPager extends NewsCenterMenuBasePager implements ViewPager.OnPageChangeListener, RefreshListView.OnRefreshListener {
+public class NewsMenuTabDetailPager extends NewsCenterMenuBasePager implements ViewPager.OnPageChangeListener, RefreshListView.OnRefreshListener, AdapterView.OnItemClickListener {
 
     @ViewInject(R.id.nsvp_tab_detail_topnews)
     private ViewPager topNewsViewPager;
@@ -68,6 +72,7 @@ public class NewsMenuTabDetailPager extends NewsCenterMenuBasePager implements V
     private String url;
     private TopNewsAdapter topNewsAdapter;
     private NewsAdapter newsAdapter;
+    private final String readIdArrayKey="read_id_array";//
 
 
     public NewsMenuTabDetailPager(Context context) {
@@ -96,7 +101,7 @@ public class NewsMenuTabDetailPager extends NewsCenterMenuBasePager implements V
         newsListView.setEnablePullDownRefresh(true);
         newsListView.setEnableLoadMoreRefresh(true);
         newsListView.setOnRefreshListener(this);
-
+        newsListView.setOnItemClickListener(this);
         return view;
     }
 
@@ -279,6 +284,30 @@ public class NewsMenuTabDetailPager extends NewsCenterMenuBasePager implements V
         }
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        // 单击条目
+
+        TabDetailBean.NewsBean newsBean = newsList.get(i - 1);
+        String readIdArray = CacheUtils.getString(mContext,readIdArrayKey,null);
+        if(!TextUtils.isEmpty(readIdArray)){
+            readIdArray += (","+newsBean.id);
+        }else{
+            readIdArray = newsBean.id;
+        }
+
+        CacheUtils.putString(mContext,readIdArrayKey,readIdArray);
+        newsAdapter.notifyDataSetChanged();
+//
+//        Intent intent = new Intent(mContext,NewsDetailUi.class);
+//        intent.putExtra("url",newsBean.url);
+//        mContext.startActivity(intent);
+
+        
+
+
+    }
+
     class NewsViewHolder {
         TextView tvTitle;
         ImageView ivImage;
@@ -314,6 +343,14 @@ public class NewsMenuTabDetailPager extends NewsCenterMenuBasePager implements V
             newsViewHolder.tvTitle.setText(newsBean.title);
             newsViewHolder.tvTime.setText(newsBean.pubdate);
 
+            //取出一寸缓存的的id
+            String readIdArray = CacheUtils.getString(mContext, readIdArrayKey, null);
+            if(!TextUtils.isEmpty(readIdArray)&&readIdArray.contains(newsBean.id)){
+                //当前缓存id不等于null，并且包含了已读条目的id
+                newsViewHolder.tvTitle.setTextColor(Color.GRAY);
+            }else{
+                newsViewHolder.tvTitle.setTextColor(Color.BLACK);
+            }
             return view;
         }
 
