@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.mob.sdk'
 
 android {
     useLibrary('org.apache.http.legacy')
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.han.citynews_n.citynews_n"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -20,6 +21,22 @@ android {
     }
 }
 
+
+MobSDK {
+    appKey "262083d1ab7c0"
+    appSecret "388fc239189278530506e9f1ce23ee91"
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            SinaWeibo {
+                appKey "568898243"
+                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+                callbackUri "http://www.sharesdk.cn"
+                shareByAppClient false
+            }
+        }
+    }
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'

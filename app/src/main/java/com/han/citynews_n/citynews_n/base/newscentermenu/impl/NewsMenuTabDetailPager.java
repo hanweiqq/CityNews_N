@@ -298,10 +298,10 @@ public class NewsMenuTabDetailPager extends NewsCenterMenuBasePager implements V
 
         CacheUtils.putString(mContext,readIdArrayKey,readIdArray);
         newsAdapter.notifyDataSetChanged();
-//
-//        Intent intent = new Intent(mContext,NewsDetailUi.class);
-//        intent.putExtra("url",newsBean.url);
-//        mContext.startActivity(intent);
+
+        Intent intent = new Intent(mContext,NewsDetailUi.class);
+        intent.putExtra("url",newsBean.url);
+        mContext.startActivity(intent);
 
         
 
