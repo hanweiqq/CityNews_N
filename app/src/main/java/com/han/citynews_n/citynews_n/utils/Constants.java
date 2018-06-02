@@ -19,6 +19,6 @@ public class Constants {
     /**
      * 组图地址
      */
-    public static  final String Photos_url = SERVER_URL+"/photos/photos_1.json";
+    public static  final String PHOTOS_URL = SERVER_URL+"/photos/photos_1.json";
 
 }

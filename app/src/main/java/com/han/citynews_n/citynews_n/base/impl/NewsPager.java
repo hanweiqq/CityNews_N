@@ -3,6 +3,7 @@ package com.han.citynews_n.citynews_n.base.impl;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.gson.Gson;
 import com.han.citynews_n.citynews_n.Fragment.LeftMenuFragment;
@@ -116,5 +117,23 @@ public class NewsPager extends TabBasePager {
         flTabBasePager.addView(rootView);
         tvTitle.setText(mLeftMenuList.get(position).title);
         pager.initData();
+
+
+        if(position == 2){
+            ibListAndGrid.setTag(pager);
+            ibListAndGrid.setVisibility(View.VISIBLE);
+            ibListAndGrid.setOnClickListener(new OnPhotoListAndGridClickListener());
+        }else{
+            ibListAndGrid.setVisibility(View.GONE);
+        }
+    }
+
+    class OnPhotoListAndGridClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            PhotosMenuPage pager= (PhotosMenuPage) view.getTag();
+            pager.switchListOrGrid((ImageButton) view);
+        }
     }
 }

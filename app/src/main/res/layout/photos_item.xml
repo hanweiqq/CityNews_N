@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dip"
+        android:background="@drawable/pic_item_list_default">
+        <ImageView
+            android:id="@+id/iv_photos_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pic_item_list_default"
+            android:scaleType="centerCrop"/>
+        <TextView
+            android:id="@+id/tv_photos_items_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="图片默认描述信息"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:layout_margin="5dip"/>
+    </LinearLayout>
+</LinearLayout>

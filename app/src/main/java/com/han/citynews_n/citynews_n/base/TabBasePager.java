@@ -28,6 +28,8 @@ public class TabBasePager implements View.OnClickListener {
     public TextView tvTitle;
     public View view;
     public FrameLayout flTabBasePager;
+    public ImageButton ibListAndGrid;
+
 
     public TabBasePager(Context context) {
         this.mContext = context;
@@ -40,8 +42,9 @@ public class TabBasePager implements View.OnClickListener {
         ibMenu = view.findViewById(R.id.ib_title_bar_menu);
         tvTitle = view.findViewById(R.id.tv_title_bar);
         flTabBasePager = view.findViewById(R.id.fl_tab_base_pager);
-        
         ibMenu.setOnClickListener(this);
+
+        ibListAndGrid = view.findViewById(R.id.ib_title_bar_list_and_grid);
         return view;
     }
     
