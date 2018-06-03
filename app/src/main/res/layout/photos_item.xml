@@ -11,12 +11,15 @@
         android:orientation="vertical"
         android:layout_margin="10dip"
         android:background="@drawable/pic_item_list_default">
+
         <ImageView
             android:id="@+id/iv_photos_item_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/pic_item_list_default"
-            android:scaleType="centerCrop"/>
+            android:minHeight="180dip"
+            android:fadingEdge="none"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pic_item_list_default" />
         <TextView
             android:id="@+id/tv_photos_items_text"
             android:layout_width="match_parent"

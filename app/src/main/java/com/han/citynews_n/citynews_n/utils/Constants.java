@@ -10,7 +10,7 @@ public class Constants {
      * 192.168.50.2
      * 服务器地址
      */
-    public static final String SERVER_URL = "http://10.0.2.2:8080/zhbj";
+    public static final String SERVER_URL = "http://172.40.10.4:8080/zhbj";
     /**
      * 新闻中心地址
      */

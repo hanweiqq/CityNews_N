@@ -190,7 +190,10 @@ public class PhotosMenuPage extends NewsCenterMenuBasePager {
             //给当前ivImage设置一个标识，为方便在后期找到它  多级缓存的核心
             mphotosHolder.ivImage.setTag(i);
             //请求网络抓取图片
-            cacheUtils.getBitmapFromUrl(photosItem.listimage, i);
+            Bitmap bm = cacheUtils.getBitmapFromUrl(photosItem.listimage, i);
+            if(bm!=null){
+                mphotosHolder.ivImage.setImageBitmap(bm);
+            }
 
             return view;
         }

@@ -40,6 +40,7 @@ public class ImageCacheUtils {
         this.context = context;
 
         cacheDir = context.getCacheDir();
+        System.out.println("cacheDir"+cacheDir.toString());
 
         //获取运行时可以使用的内存大小/8
         long maxMemory = Runtime.getRuntime().maxMemory() / 8;
@@ -106,6 +107,32 @@ public class ImageCacheUtils {
 
 
     /**
+     * 把图片缓存在本地
+     *
+     * @param url
+     * @param bm
+     */
+    private void writeToLocal(String url, Bitmap bm) {
+
+        System.out.println("存入本地");
+
+        try {
+            String fileName = MD5Encoder.encode(url).substring(0,10);
+            fos = new FileOutputStream(new File(cacheDir,fileName));
+            bm.compress(Bitmap.CompressFormat.JPEG,100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        finally{
+//            try {
+//                fos.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+    }
+
+    /**
      * 根据url请求网络得到图片
      *
      * @param url
@@ -121,27 +148,7 @@ public class ImageCacheUtils {
     }
 
 
-    /**
-     * 把图片缓存在本地
-     *
-     * @param url
-     * @param bm
-     */
-    private void writeToLocal(String url, Bitmap bm) {
-        try {
-            String fileName = MD5Encoder.encode(url).substring(0,10);
-            fos = new FileOutputStream(new File(cacheDir,fileName));
-            bm.compress(Bitmap.CompressFormat.JPEG,100, fos);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally{
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+
 
 
 
